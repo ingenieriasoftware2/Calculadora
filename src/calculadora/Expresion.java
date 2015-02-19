@@ -28,14 +28,17 @@ public String inicio_exprecion(String palabra){
          boolean q;
          x= c.limpiarParentesis(palabra);
          h.SepararCaracteres(x);
+        
          for (int i = 0; i <= lista.size(); i++) {
          int variable,opc,acu;
       variable=lista.size();
       opc= variable-1;
       acu= opc -1;
+       if(lista.size()!=1){
       h.realizar_Operacion(acu,opc); 
+       }
     }
-         
+            
          return pasos;
 }
     public  void SepararCaracteres(String Exp) {
