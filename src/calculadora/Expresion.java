@@ -153,6 +153,11 @@ public String inicio_exprecion(String palabra){
         }
        // System.out.println("respuesta de la operacion " + b);
     }
+    public  void vaciar_todo(){
+      x ="";
+      pasos="";
+      lista= new ArrayList();;
+    }
     
 
     public void matriz_Prioridad() {
