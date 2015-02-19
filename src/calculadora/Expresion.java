@@ -16,7 +16,7 @@ public class Expresion {
 
     public static ArrayList e = new ArrayList();
     public static int[][] m = new int[7][7];
-    public static String x ,pasos;
+    public static String x ="" ,pasos="";
     Pila pila = new Pila();
          
       Comprobador c = new Comprobador();
@@ -35,6 +35,7 @@ public String inicio_exprecion(String palabra){
       acu= opc -1;
       h.realizar_Operacion(acu,opc); 
     }
+         
          return pasos;
 }
     public  void SepararCaracteres(String Exp) {
@@ -99,21 +100,21 @@ public String inicio_exprecion(String palabra){
         operado = pila.topePila();
         if (operado == '+') {
             resultado = controlador.suma(numero1, numero2);
-            pasos+="operar  suma entre  ("+numero1+" + "+numero2+" )";
-             System.out.println("operar  suma entre  "+numero1+" + "+numero2+" )");
+            pasos+=" operar  suma entre  ("+numero1+" + "+numero2+" )";
+          //   System.out.println("operar  suma entre  "+numero1+" + "+numero2+" )");
         
         } else if (operado == '-') {
             resultado = controlador.resta(numero1, numero2);
-            pasos+="operar  resta entre  "+numero1+" - "+numero2+" )";
-               System.out.println("operar  resta entre  "+numero1+" - "+numero2+" )");
+            pasos+=" operar  resta entre ( "+numero1+" - "+numero2+" )";
+          //     System.out.println("operar  resta entre  "+numero1+" - "+numero2+" )");
         } else if (operado == '*') {
             resultado = controlador.multiplicacion(numero1, numero2);
-            pasos+="operar  multiplicacion entre  "+numero1+" * "+numero2+" )";
-               System.out.println("operar  multiplicacion entre  "+numero1+" * "+numero2+" )");
+            pasos+=" operar  multiplicacion entre  ( "+numero1+" * "+numero2+" )";
+          //     System.out.println("operar  multiplicacion entre  "+numero1+" * "+numero2+" )");
         } else if (operado == '/') {
             resultado = controlador.division(numero1, numero2);
-            pasos+="operar  divicion entre  "+numero1+" / "+numero2+" )";
-               System.out.println("operar  divicion entre  "+numero1+" / "+numero2+" )");
+            pasos+=" operar  divicion entre ( "+numero1+" / "+numero2+" )";
+          //     System.out.println("operar  divicion entre  "+numero1+" / "+numero2+" )");
         }
         imprimir(resultado);
         lista.set(variable, resultado);
@@ -126,20 +127,20 @@ public String inicio_exprecion(String palabra){
        
         if (operado == '+') {
             resultado = controlador.suma(variable, variable2);
-            pasos+="operar  suma entre parentesis ( "+variable+" + "+variable2+" )";
-             System.out.println("operar  suma entre parentesis ( "+variable+" + "+variable2+" )");
+            pasos+=" operar  suma entre parentesis ( "+variable+" + "+variable2+" )";
+          //   System.out.println("operar  suma entre parentesis ( "+variable+" + "+variable2+" )");
         } else if (operado == '-') {
             resultado = controlador.resta(variable, variable2);
-            pasos+="operar  resta entre parentesis ( "+variable+" - "+variable2+" )";
-            System.out.println("operar  resta entre parentesis ( "+variable+" - "+variable2+" )");
+            pasos+=" operar  resta entre parentesis ( "+variable+" - "+variable2+" )";
+           // System.out.println("operar  resta entre parentesis ( "+variable+" - "+variable2+" )");
         } else if (operado == '*') {
             resultado = controlador.multiplicacion(variable, variable2);
-            pasos+="operar  multiplicacion entre parentesis ( "+variable+" * "+variable2+" )";
-            System.out.println("operar  multiplicacion entre parentesis ( "+variable+" * "+variable2+" )");
+            pasos+=" operar  multiplicacion entre parentesis ( "+variable+" * "+variable2+" )";
+         //   System.out.println("operar  multiplicacion entre parentesis ( "+variable+" * "+variable2+" )");
         } else if (operado == '/') {
             resultado = controlador.division(variable, variable2);
             pasos+="operar  divicion entre parentesis ( "+variable+" / "+variable2+" )";
-            System.out.println("operar  divicion entre parentesis ( "+variable+" / "+variable2+" )");
+           // System.out.println("operar  divicion entre parentesis ( "+variable+" / "+variable2+" )");
         }
         imprimir(resultado);
        
@@ -147,8 +148,10 @@ public String inicio_exprecion(String palabra){
     }
 
     public void imprimir(float b) {
-        pasos+="respuesta de la operacion " + b;
-        System.out.println("respuesta de la operacion " + b);
+        if(b!= 0.0){
+        pasos+=" respuesta de la operacion " + b;
+        }
+       // System.out.println("respuesta de la operacion " + b);
     }
     
 
@@ -221,5 +224,8 @@ public String inicio_exprecion(String palabra){
 
     public static boolean evaluativo(char c) {
         return (c == '+' || c == '-' || c == '*' || c == '/' || c == '^' || c == '(' || c == ')');
+    }
+    public float resultado_final(){
+        return lista.get(0);
     }
 }
